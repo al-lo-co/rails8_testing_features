@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    ProductWelcomeJob.perform_later(product)
+
     product
   end
 
