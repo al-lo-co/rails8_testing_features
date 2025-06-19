@@ -23,7 +23,10 @@ default: &default
 development:
   <<: *default
   database: rails8_testing_features_development
-
+  cache:
+    <<: *default
+    database: rails8_testing_features_development_cache
+    migrations_paths: db/cache_migrate #solid cache configuration on development
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
@@ -96,3 +99,14 @@ production:
     <<: *primary_production
     database: rails8_testing_features_production_cable
     migrations_paths: db/cable_migrate
+  #sharding for scalability
+  cache_shard1:
+      database: cache1_production
+      host: cache1-db
+  cache_shard2:
+    database: cache2_production
+    host: cache2-db
+  cache_shard3:
+    database: cache3_production
+    host: cache3-db
+  databases: [cache_shard1, cache_shard2, cache_shard3]
