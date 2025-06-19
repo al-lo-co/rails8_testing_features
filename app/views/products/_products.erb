@@ -1,0 +1,7 @@
+<% @products.each do |product| %>
+  <% cache(product) do %> <%#fragment cache %>
+    <tr>
+      <td><%= link_to product.name, product %></td>
+    </tr>
+  <% end %>
+<% end %>

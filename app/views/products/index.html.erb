@@ -1,0 +1,20 @@
+<div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+  <div style="width: 50%;">
+    <h1>Products</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= render partial: "products/products", cached: true %> <%#collection cache %>
+      </tbody>
+    </table>
+
+    <%= link_to "New Product", new_product_path, class: "button" %>
+    <%== pagy_nav(@pagy) %>
+  </div>
+</div>
